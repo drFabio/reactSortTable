@@ -2,9 +2,13 @@
   "name": "react_sort_table",
   "version": "0.0.1",
   "description": "A table with ordering capabilities",
-  "main": "index.jsx",
+  "main": "lib/sortTable.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run pre:babel && npm run pre:bundle && npm run pre:uglify",
+    "pre:babel": "babel ./src --out-dir ./lib --source-maps --presets es2015,react --plugins babel-plugin-add-module-exports --copy-files",
+    "pre:bundle": "browserify -t sassify -t browserify-global-shim ./lib/sortTable.js -o ./build/react-sort-table.js --standalone ReactSortTable",
+    "pre:uglify": "uglifyjs ./build/react-sort-table.js --compress --mangle --output ./build/react-sort-table.min.js --source-map ./build/react-sort-table.min.js.map"
   },
   "repository": {
     "type": "git",
@@ -15,5 +19,32 @@
   "bugs": {
     "url": "https://github.com/drFabio/reactSortTable/issues"
   },
-  "homepage": "https://github.com/drFabio/reactSortTable#readme"
+  "homepage": "https://github.com/drFabio/reactSortTable#readme",
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.5.2",
+    "babel-loader": "^6.2.2",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-react": "^6.5.0",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "browserify-global-shim": "^1.0.3",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-webpack-plugin": "^2.8.1",
+    "node-sass": "^3.4.2",
+    "sass-loader": "^3.1.2",
+    "sassify": "^0.10.0",
+    "style-loader": "^0.13.0",
+    "uglify-js": "^2.6.2",
+    "webpack": "^1.12.13",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-merge": "^0.7.3"
+  },
+  "dependencies": {
+    "react": "^0.14.7"
+  },
+  "browserify-global-shim": {
+    "react": "React"
+  }
 }

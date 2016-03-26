@@ -1,0 +1,24 @@
+table.table tr.active td{
+    background-color: #61b2a7;
+    color: #FFF;
+}
+table.table tr.active td {
+    a,a:hover,a:visited,a:active{
+        color: #FFF;
+    }
+}
+.tableContainer {
+    position: relative;
+}
+.sortArrow{
+    opacity: 0.5;  
+}
+.sortContainer--top .sortArrow--top{
+    opacity: 1;
+}
+.sortContainer--bottom .sortArrow--bottom{
+    opacity: 1;   
+}
+.sortHeader:hover{
+    cursor: pointer;
+}

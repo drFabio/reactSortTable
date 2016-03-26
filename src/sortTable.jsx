@@ -1,5 +1,4 @@
 import React from 'react';
-import {Paginator} from '../'
 export const Table = React.createClass({
     render(){
         const headers = this.props.headers || [];
@@ -130,4 +129,5 @@ Table.footer = React.createClass({
         loading: React.PropTypes.bool
     }
 })
-require('./table.scss')
+export default Table
+require('./sortTable.scss')
