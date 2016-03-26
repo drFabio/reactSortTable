@@ -84,7 +84,7 @@ Table.body = React.createClass({
             if(data.hasOwnProperty(key)){
                 return (<td  key={key+'_'+key}>{data[key]}</td>)
             }
-            else if(this.props.dataFunctions.hasOwnProperty(key)){
+            else if(typeof this.props.dataFunctions != 'undefined' && this.props.dataFunctions.hasOwnProperty(key)){
                 return (<td key={key+'_'+key}>{this.props.dataFunctions[key](context,data)}</td>)
             }
             else{
