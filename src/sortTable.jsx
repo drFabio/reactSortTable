@@ -81,11 +81,11 @@ Table.body = React.createClass({
         const context = this.props.context
         const key = index
         const tds = this.context.keys.map((key)=>{
-            if(data.hasOwnProperty(key)){
-                return (<td  key={key+'_'+key}>{data[key]}</td>)
-            }
-            else if(typeof this.props.dataFunctions != 'undefined' && this.props.dataFunctions.hasOwnProperty(key)){
+            if(typeof this.props.dataFunctions != 'undefined' && this.props.dataFunctions.hasOwnProperty(key)){
                 return (<td key={key+'_'+key}>{this.props.dataFunctions[key](context,data)}</td>)
+            }
+            else if(data.hasOwnProperty(key)){
+                return (<td  key={key+'_'+key}>{data[key]}</td>)
             }
             else{
                 return (<td  key={key+'_'+key}></td>)
