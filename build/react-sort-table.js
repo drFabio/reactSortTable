@@ -79,10 +79,10 @@ Table.header = _react2.default.createClass({
                     if (sortable) {
                         var sortClassName = 'sortContainer ';
                         if (currentSort[key] == 1) {
-                            sortClassName = 'sortContainer--top';
+                            sortClassName += 'sortContainer--top';
                         }
                         if (currentSort[key] == -1) {
-                            sortClassName = 'sortContainer--bottom';
+                            sortClassName += 'sortContainer--bottom';
                         }
                         sortArrow = _react2.default.createElement(
                             'div',
@@ -103,9 +103,13 @@ Table.header = _react2.default.createClass({
                         return _react2.default.createElement(
                             'th',
                             { key: text },
-                            text,
-                            ' ',
-                            sortArrow
+                            _react2.default.createElement(
+                                'span',
+                                null,
+                                text,
+                                ' ',
+                                sortArrow
+                            )
                         );
                     }
                 })

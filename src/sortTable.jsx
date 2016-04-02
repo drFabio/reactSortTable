@@ -49,10 +49,10 @@ Table.header = React.createClass({
                             if(sortable){
                                 let sortClassName = 'sortContainer '
                                 if(currentSort[key]==1){
-                                    sortClassName= 'sortContainer--top'
+                                    sortClassName+= 'sortContainer--top'
                                 }
                                 if(currentSort[key]==-1){
-                                    sortClassName= 'sortContainer--bottom'
+                                    sortClassName+= 'sortContainer--bottom'
                                 }
                                 sortArrow = (
                                     <div className={sortClassName}>
@@ -63,7 +63,7 @@ Table.header = React.createClass({
                                 return <th key={text} className="sortHeader" onClick={()=>{this.changeOrder(key)}}>{text} {sortArrow}</th>
                             }
                             else{
-                                return <th key={text}>{text} {sortArrow}</th>
+                                return <th key={text}><span>{text} {sortArrow}</span></th>
                             }
                         })
                     }
