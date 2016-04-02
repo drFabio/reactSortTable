@@ -13,6 +13,9 @@ table.table tr.active td {
 .sortArrow{
     opacity: 0.5;  
 }
+.sortContainer{
+    display: inline-block;
+}
 .sortContainer--top .sortArrow--top{
     opacity: 1;
 }
