@@ -84,32 +84,24 @@ Table.header = _react2.default.createClass({
                         if (currentSort[key] == -1) {
                             sortClassName += 'sortContainer--bottom';
                         }
-                        sortArrow = _react2.default.createElement(
-                            'div',
-                            { className: sortClassName },
-                            _react2.default.createElement('span', { className: 'sortArrow sortArrow--top glyphicon glyphicon-triangle-top' }),
-                            _react2.default.createElement('span', { className: 'sortArrow sortArrow--bottom glyphicon glyphicon-triangle-bottom' })
-                        );
                         return _react2.default.createElement(
                             'th',
                             { key: text, className: 'sortHeader', onClick: function onClick() {
                                     _this.changeOrder(key);
                                 } },
-                            text,
-                            ' ',
-                            sortArrow
+                            _react2.default.createElement(
+                                'div',
+                                { className: sortClassName },
+                                text,
+                                _react2.default.createElement('span', { className: 'sortArrow sortArrow--top glyphicon glyphicon-triangle-top' }),
+                                _react2.default.createElement('span', { className: 'sortArrow sortArrow--bottom glyphicon glyphicon-triangle-bottom' })
+                            )
                         );
                     } else {
                         return _react2.default.createElement(
                             'th',
                             { key: text },
-                            _react2.default.createElement(
-                                'span',
-                                null,
-                                text,
-                                ' ',
-                                sortArrow
-                            )
+                            text
                         );
                     }
                 })
@@ -200,6 +192,6 @@ exports.default = Table;
 require('./sortTable.scss');
 
 },{"./sortTable.scss":2}],2:[function(require,module,exports){
-module.exports = "table.table tr.active td {\n  background-color: #61b2a7;\n  color: #FFF; }\n\ntable.table tr.active td a, table.table tr.active td a:hover, table.table tr.active td a:visited, table.table tr.active td a:active {\n  color: #FFF; }\n\n.tableContainer {\n  position: relative; }\n\n.sortArrow {\n  opacity: 0.5; }\n\n.sortContainer {\n  display: inline-block; }\n\n.sortContainer--top .sortArrow--top {\n  opacity: 1; }\n\n.sortContainer--bottom .sortArrow--bottom {\n  opacity: 1; }\n\n.sortHeader:hover {\n  cursor: pointer; }\n\n/*# sourceMappingURL=data:application/json;base64,ewoJInZlcnNpb24iOiAzLAoJImZpbGUiOiAic29ydFRhYmxlLnNjc3MiLAoJInNvdXJjZXMiOiBbCgkJInNvcnRUYWJsZS5zY3NzIgoJXSwKCSJzb3VyY2VzQ29udGVudCI6IFsKCQkidGFibGUudGFibGUgdHIuYWN0aXZlIHRke1xuICAgIGJhY2tncm91bmQtY29sb3I6ICM2MWIyYTc7XG4gICAgY29sb3I6ICNGRkY7XG59XG50YWJsZS50YWJsZSB0ci5hY3RpdmUgdGQge1xuICAgIGEsYTpob3ZlcixhOnZpc2l0ZWQsYTphY3RpdmV7XG4gICAgICAgIGNvbG9yOiAjRkZGO1xuICAgIH1cbn1cbi50YWJsZUNvbnRhaW5lciB7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuLnNvcnRBcnJvd3tcbiAgICBvcGFjaXR5OiAwLjU7ICBcbn1cbi5zb3J0Q29udGFpbmVye1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbn1cbi5zb3J0Q29udGFpbmVyLS10b3AgLnNvcnRBcnJvdy0tdG9we1xuICAgIG9wYWNpdHk6IDE7XG59XG4uc29ydENvbnRhaW5lci0tYm90dG9tIC5zb3J0QXJyb3ctLWJvdHRvbXtcbiAgICBvcGFjaXR5OiAxOyAgIFxufVxuLnNvcnRIZWFkZXI6aG92ZXJ7XG4gICAgY3Vyc29yOiBwb2ludGVyO1xufSIKCV0sCgkibWFwcGluZ3MiOiAiQUFBQSxLQUFLLEFBQUEsTUFBTSxDQUFDLEVBQUUsQUFBQSxPQUFPLENBQUMsRUFBRSxDQUFBO0VBQ3BCLGdCQUFnQixFQUFFLE9BQVE7RUFDMUIsS0FBSyxFQUFFLElBQUssR0FDZjs7QUFDRCxLQUFLLEFBQUEsTUFBTSxDQUFDLEVBQUUsQUFBQSxPQUFPLENBQUMsRUFBRSxDQUNwQixDQUFDLEVBREwsS0FBSyxBQUFBLE1BQU0sQ0FBQyxFQUFFLEFBQUEsT0FBTyxDQUFDLEVBQUUsQ0FDbEIsQ0FBQyxBQUFBLE1BQU0sRUFEYixLQUFLLEFBQUEsTUFBTSxDQUFDLEVBQUUsQUFBQSxPQUFPLENBQUMsRUFBRSxDQUNWLENBQUMsQUFBQSxRQUFRLEVBRHZCLEtBQUssQUFBQSxNQUFNLENBQUMsRUFBRSxBQUFBLE9BQU8sQ0FBQyxFQUFFLENBQ0EsQ0FBQyxBQUFBLE9BQU8sQ0FBQTtFQUN4QixLQUFLLEVBQUUsSUFBSyxHQUNmOztBQUVMLGVBQWUsQ0FBQztFQUNaLFFBQVEsRUFBRSxRQUFTLEdBQ3RCOztBQUNELFVBQVUsQ0FBQTtFQUNOLE9BQU8sRUFBRSxHQUFJLEdBQ2hCOztBQUNELGNBQWMsQ0FBQTtFQUNWLE9BQU8sRUFBRSxZQUFhLEdBQ3pCOztBQUNELG1CQUFtQixDQUFDLGVBQWUsQ0FBQTtFQUMvQixPQUFPLEVBQUUsQ0FBRSxHQUNkOztBQUNELHNCQUFzQixDQUFDLGtCQUFrQixDQUFBO0VBQ3JDLE9BQU8sRUFBRSxDQUFFLEdBQ2Q7O0FBQ0QsV0FBVyxBQUFBLE1BQU0sQ0FBQTtFQUNiLE1BQU0sRUFBRSxPQUFRLEdBQ25CIiwKCSJuYW1lcyI6IFtdCn0= */";
+module.exports = "table.table tr.active td {\n  background-color: #61b2a7;\n  color: #FFF; }\n\ntable.table tr.active td a, table.table tr.active td a:hover, table.table tr.active td a:visited, table.table tr.active td a:active {\n  color: #FFF; }\n\n.tableContainer {\n  position: relative; }\n\n.sortArrow {\n  opacity: 0.5; }\n\n.sortContainer {\n  display: inline-block;\n  white-space: nowrap; }\n\n.sortContainer--top .sortArrow--top {\n  opacity: 1; }\n\n.sortContainer--bottom .sortArrow--bottom {\n  opacity: 1; }\n\n.sortHeader:hover {\n  cursor: pointer; }\n\n/*# sourceMappingURL=data:application/json;base64,ewoJInZlcnNpb24iOiAzLAoJImZpbGUiOiAic29ydFRhYmxlLnNjc3MiLAoJInNvdXJjZXMiOiBbCgkJInNvcnRUYWJsZS5zY3NzIgoJXSwKCSJzb3VyY2VzQ29udGVudCI6IFsKCQkidGFibGUudGFibGUgdHIuYWN0aXZlIHRke1xuICAgIGJhY2tncm91bmQtY29sb3I6ICM2MWIyYTc7XG4gICAgY29sb3I6ICNGRkY7XG59XG50YWJsZS50YWJsZSB0ci5hY3RpdmUgdGQge1xuICAgIGEsYTpob3ZlcixhOnZpc2l0ZWQsYTphY3RpdmV7XG4gICAgICAgIGNvbG9yOiAjRkZGO1xuICAgIH1cbn1cbi50YWJsZUNvbnRhaW5lciB7XG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuLnNvcnRBcnJvd3tcbiAgICBvcGFjaXR5OiAwLjU7ICBcbn1cbi5zb3J0Q29udGFpbmVye1xuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xufVxuLnNvcnRDb250YWluZXItLXRvcCAuc29ydEFycm93LS10b3B7XG4gICAgb3BhY2l0eTogMTtcbn1cbi5zb3J0Q29udGFpbmVyLS1ib3R0b20gLnNvcnRBcnJvdy0tYm90dG9te1xuICAgIG9wYWNpdHk6IDE7ICAgXG59XG4uc29ydEhlYWRlcjpob3ZlcntcbiAgICBjdXJzb3I6IHBvaW50ZXI7XG59IgoJXSwKCSJtYXBwaW5ncyI6ICJBQUFBLEtBQUssQUFBQSxNQUFNLENBQUMsRUFBRSxBQUFBLE9BQU8sQ0FBQyxFQUFFLENBQUE7RUFDcEIsZ0JBQWdCLEVBQUUsT0FBUTtFQUMxQixLQUFLLEVBQUUsSUFBSyxHQUNmOztBQUNELEtBQUssQUFBQSxNQUFNLENBQUMsRUFBRSxBQUFBLE9BQU8sQ0FBQyxFQUFFLENBQ3BCLENBQUMsRUFETCxLQUFLLEFBQUEsTUFBTSxDQUFDLEVBQUUsQUFBQSxPQUFPLENBQUMsRUFBRSxDQUNsQixDQUFDLEFBQUEsTUFBTSxFQURiLEtBQUssQUFBQSxNQUFNLENBQUMsRUFBRSxBQUFBLE9BQU8sQ0FBQyxFQUFFLENBQ1YsQ0FBQyxBQUFBLFFBQVEsRUFEdkIsS0FBSyxBQUFBLE1BQU0sQ0FBQyxFQUFFLEFBQUEsT0FBTyxDQUFDLEVBQUUsQ0FDQSxDQUFDLEFBQUEsT0FBTyxDQUFBO0VBQ3hCLEtBQUssRUFBRSxJQUFLLEdBQ2Y7O0FBRUwsZUFBZSxDQUFDO0VBQ1osUUFBUSxFQUFFLFFBQVMsR0FDdEI7O0FBQ0QsVUFBVSxDQUFBO0VBQ04sT0FBTyxFQUFFLEdBQUksR0FDaEI7O0FBQ0QsY0FBYyxDQUFBO0VBQ1YsT0FBTyxFQUFFLFlBQWE7RUFDdEIsV0FBVyxFQUFFLE1BQU8sR0FDdkI7O0FBQ0QsbUJBQW1CLENBQUMsZUFBZSxDQUFBO0VBQy9CLE9BQU8sRUFBRSxDQUFFLEdBQ2Q7O0FBQ0Qsc0JBQXNCLENBQUMsa0JBQWtCLENBQUE7RUFDckMsT0FBTyxFQUFFLENBQUUsR0FDZDs7QUFDRCxXQUFXLEFBQUEsTUFBTSxDQUFBO0VBQ2IsTUFBTSxFQUFFLE9BQVEsR0FDbkIiLAoJIm5hbWVzIjogW10KfQ== */";
 },{}]},{},[1])(1)
 });

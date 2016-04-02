@@ -15,6 +15,7 @@ table.table tr.active td {
 }
 .sortContainer{
     display: inline-block;
+    white-space: nowrap;
 }
 .sortContainer--top .sortArrow--top{
     opacity: 1;
