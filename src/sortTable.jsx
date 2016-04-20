@@ -25,13 +25,20 @@ export const Table = React.createClass({
     getChildContext: function() {
         const keys = (this.props.headers?Object.keys(this.props.headers):[])
         return {headers: this.props.headers,keys: keys}
+    },
+    propTypes: {
+        headers: React.PropTypes.object.isRequired,
+        keys: React.PropTypes.array.isRequired
     }
 })
+
 Table.header = React.createClass({
     changeOrder(key){
         const currentSort = this.props.sort || {}
         const direction = this.props.sort[key]==-1?1:-1
-        this.props.onSortChange(key,direction)
+        if(this.props.hasOwnProperty('onSortChange')){
+            this.props.onSortChange(key,direction)
+        }
     },
     render(){
         const headers = this.context.headers
@@ -76,7 +83,16 @@ Table.header = React.createClass({
     contextTypes: {
         headers: React.PropTypes.object,
         keys: React.PropTypes.array
-    }
+    },
+    getDefaultProps(){
+        return {
+            sort:{}
+        }
+    },
+    propTypes: {
+        onSortChange:React.PropTypes.func,
+        sort:React.PropTypes.object
+    },
 })
 Table.body = React.createClass({
     getContent(data,index){
@@ -112,8 +128,10 @@ Table.body = React.createClass({
     },
     contextTypes: {
         keys: React.PropTypes.array
+    },
+    propTypes: {
+        data:React.PropTypes.array.isRequired
     }
-
 })
 Table.footer = React.createClass({
     render(){
