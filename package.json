@@ -1,10 +1,12 @@
 {
-  "name": "react_sort_table",
-  "version": "0.0.1",
+  "name": "react-sort-table",
+  "version": "0.0.2",
   "description": "A table with ordering capabilities",
   "main": "lib/sortTable.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "example:es6": "PORT=8080 webpack-dev-server  --history-api-fallback",
+    "example:es6:build":"webpack",
     "prepublish": "npm run pre:babel && npm run pre:bundle && npm run pre:uglify",
     "pre:babel": "babel ./src --out-dir ./lib --source-maps --presets es2015,react --plugins babel-plugin-add-module-exports --copy-files",
     "pre:bundle": "browserify -t sassify -t browserify-global-shim ./lib/sortTable.js -o ./build/react-sort-table.js --standalone ReactSortTable",
@@ -42,7 +44,7 @@
     "webpack-merge": "^0.7.3"
   },
   "dependencies": {
-    "react": "^0.14.7"
+    "react": "^15.1.0"
   },
   "browserify-global-shim": {
     "react": "React"
