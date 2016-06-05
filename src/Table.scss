@@ -1,0 +1,19 @@
+.sortArrow{
+    cursor: pointer;
+    opacity: 0.5;  
+}
+.sortArrow--top {
+    content:'^';
+}
+.sortArrow--bottom {
+    content:'V';
+}
+.sortContainer--top .sortArrow--top{
+    opacity: 1;
+}
+.sortContainer--bottom .sortArrow--bottom{
+    opacity: 1;   
+}
+.tableHeader--withSort:hover{
+    cursor: pointer;
+}

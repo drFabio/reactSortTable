@@ -4,7 +4,7 @@ class TableHeader extends React.Component {
         super(props)
         this._changeOrder = this.changeOrder.bind(this)
         this._getHeaderForKey = this.getHeaderForKey.bind(this)
-        this._classTh = 'sortHeader'
+        this._classTh = 'tableHeader'
         this._getHeaderForKey = this.getHeaderForKey.bind(this)
     }
     changeOrder(key){
@@ -21,6 +21,7 @@ class TableHeader extends React.Component {
         let isUp = null;
         let upArrow = null
         let downArrow = null
+        let className = this._classTh
         if(sortable){
             if(currentSort[key]==1){
                 isUp = true
@@ -30,11 +31,11 @@ class TableHeader extends React.Component {
             }
             upArrow = this.getUpArrow(isUp===true)
             downArrow = this.getDownArrow(isUp===false)
-
+            className+=' '+this._classTh+'--withSort'
         }
         const sortClassName = this.getSortClassName(isUp)
         return (
-            <th key={text} className={this._classTh} onClick={()=>{this.changeOrder(key)}}>
+            <th key={text} className={className} onClick={()=>{this.changeOrder(key)}}>
                 <div className={sortClassName}>
                     {text}
                     {upArrow}
@@ -49,7 +50,7 @@ class TableHeader extends React.Component {
             return this.props.upArrow
         }
         return (
-            <span className="sortArrow sortArrow--top"></span>
+            <span className="sortArrow sortArrow--top">&uarr;</span>
         )
     }
 
@@ -58,7 +59,7 @@ class TableHeader extends React.Component {
             return this.props.downArrow
         }
         return (
-            <span className="sortArrow sortArrow--bottom"></span>
+            <span className="sortArrow sortArrow--bottom">&darr;</span>
         )
     }
     getSortClassName(isUp){

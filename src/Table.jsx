@@ -5,8 +5,8 @@ import TableBody from './TableBody'
 class Table extends React.Component {
     constructor(props) {
         super(props)
-        this._tableClass = 'table'
-        this._containerClass = 'tableContainer'
+        this._tableClass = this.props.hasOwnProperty('tableClass')?this.props.tableClass:'table'
+        this._containerClass = this.props.hasOwnProperty('containerClass')?this.props.containerClass:'tableContainer'
         this._getDefaultContent = this.getDefaultContent.bind(this)
     }
     render(){
@@ -57,6 +57,7 @@ Table.childContextTypes = {
 TableBody.propTypes = {
     //For Table 
     headers: React.PropTypes.object,
+    tableClass:React.PropTypes.string,
     //FOr header
     onSortChange:React.PropTypes.func,
     sort:React.PropTypes.object,
@@ -69,3 +70,4 @@ TableBody.propTypes = {
 }
 export default Table
 export {Table}
+require('./Table.scss')
