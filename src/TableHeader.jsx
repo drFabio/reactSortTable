@@ -45,11 +45,18 @@ class TableHeader extends React.Component {
 
     }
     getUpArrow(active){
+        if(this.props.hasOwnProperty('upArrow')){
+            return this.props.upArrow
+        }
         return (
             <span className="sortArrow sortArrow--top"></span>
         )
     }
+
     getDownArrow(actie){
+        if(this.props.hasOwnProperty('downArrow')){
+            return this.props.downArrow
+        }
         return (
             <span className="sortArrow sortArrow--bottom"></span>
         )
@@ -86,7 +93,9 @@ TableHeader.contextTypes = {
 }
 TableHeader.propTypes = {
     onSortChange:React.PropTypes.func,
-    sort:React.PropTypes.object
+    sort:React.PropTypes.object,
+    upArrow: React.PropTypes.element,
+    downArrow: React.PropTypes.element
 }
 TableHeader.defaultProps = {
     sort:{}

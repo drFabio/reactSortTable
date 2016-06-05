@@ -32,9 +32,13 @@ class Table extends React.Component {
                 <Table.header
                     onSortChange={this.props.onSortChange}
                     sort={this.props.sort}
+                    downArrow={this.props.downArrow}
+                    upArrow={this.props.upArrow}
                 />
                 <Table.body 
                     data={this.props.data}
+                    dataFunctions={this.props.dataFunctions}
+                    getClassForItem={this.props.getClassForItem}
                 />
             </table>
         )
@@ -49,6 +53,19 @@ Table.footer = TableFooter
 Table.body = TableBody
 Table.childContextTypes = {
     headers: React.PropTypes.object
+}
+TableBody.propTypes = {
+    //For Table 
+    headers: React.PropTypes.object,
+    //FOr header
+    onSortChange:React.PropTypes.func,
+    sort:React.PropTypes.object,
+    upArrow: React.PropTypes.element,
+    downArrow: React.PropTypes.element,
+    //For body
+    data:React.PropTypes.array.isRequired,
+    dataFunctions: React.PropTypes.object,
+    getClassForItem:React.PropTypes.func
 }
 export default Table
 export {Table}
